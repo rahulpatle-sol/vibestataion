@@ -133,3 +133,14 @@ header {
 }
 
 
+/* Add this to your style.css to prevent long names from breaking UI */
+.track div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+}
+
+.track b {
+    font-size: 0.85rem;
+}
