@@ -3,76 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VibeStream Pro | Full Edition</title>
+    <title>VibeStream Pro</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-mode">
-<header>
-    <div class="header-content">
-        <div class="logo"><i class="ri-netease-cloud-music-fill"></i><span>VibeStream</span></div>
-        
-        <div class="search-wrapper">
+<body>
+    <div class="glass-wrapper">
+        <aside class="sidebar">
+            <div class="logo">Vibe<span>Stream</span></div>
             <div class="search-bar">
                 <i class="ri-search-2-line"></i>
-                <input type="text" id="searchInput" placeholder="What do you want to listen to?">
+                <input type="text" id="searchInput" placeholder="Search vibes...">
             </div>
-        </div>
-
-        <div class="header-right">
-            <button id="themeToggle" class="theme-btn">
-                <i class="ri-moon-clear-line"></i>
-            </button>
-        </div>
-    </div>
-</header>
-
-    <main>
-        <aside class="sidebar left-side">
-            <h3><i class="ri-fire-line"></i> Trending</h3>
-            <div id="onlinePlaylist" class="scroll-list"></div>
+            <nav class="tabs">
+                <button class="tab-link active" onclick="switchTab('online')"><i class="ri-fire-line"></i> Trending</button>
+                <button class="tab-link" onclick="switchTab('saved')"><i class="ri-heart-3-line"></i> My Vibe</button>
+            </nav>
+            <div id="onlinePlaylist" class="list active"></div>
+            <div id="savedPlaylist" class="list"></div>
         </aside>
 
-        <section class="player-center">
-            <div class="player-card">
-                <div class="disk-container">
-                    <div class="disk" id="disk"></div>
-                </div>
-                
-                <div class="song-detail">
-                    <h2 id="trackTitle">Select Music</h2>
-                    <p id="trackArtist">Artist Name</p>
-                </div>
-
+        <main id="mainPlayer" class="player-container">
+            <button id="minimizeBtn" class="mob-toggle"><i class="ri-arrow-down-s-line"></i></button>
+            
+            <div class="visualizer-overlay">
                 <canvas id="visualizer"></canvas>
+            </div>
 
-                <div class="progress-container">
+            <div class="player-content">
+                <div id="disk" class="main-disk"></div>
+                <div class="song-detail">
+                    <h1 id="trackTitle">Ready to Vibe?</h1>
+                    <p id="trackArtist">Search a song to start</p>
+                </div>
+
+                <div class="progress-box">
                     <span id="currentTime">0:00</span>
-                    <input type="range" id="seekSlider" value="0" max="100">
+                    <input type="range" id="seekSlider" value="0">
                     <span id="duration">0:00</span>
                 </div>
 
                 <div class="main-controls">
-                    <button id="prev"><i class="ri-skip-back-fill"></i></button>
+                    <button id="prev" class="sec-btn"><i class="ri-skip-back-fill"></i></button>
                     <button id="playPause" class="play-btn"><i class="ri-play-fill"></i></button>
-                    <button id="next"><i class="ri-skip-forward-fill"></i></button>
+                    <button id="next" class="sec-btn"><i class="ri-skip-forward-fill"></i></button>
                 </div>
 
-                <div class="volume-container">
-                    <i class="ri-volume-up-line"></i>
-                    <input type="range" id="volumeSlider" value="80" max="100">
+                <div class="volume-control">
+                    <i class="ri-volume-down-line"></i>
+                    <input type="range" id="volumeSlider" value="80">
                 </div>
             </div>
-        </section>
-
-        <aside class="sidebar right-side">
-            <h3><i class="ri-playlist-add-line"></i> My Playlist</h3>
-            <button class="add-btn" onclick="document.getElementById('fileInput').click()">+ Add Local</button>
-            <input type="file" id="fileInput" multiple hidden accept="audio/*">
-            <div id="localPlaylist" class="scroll-list"></div>
-        </aside>
-    </main>
-
+        </main>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
