@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VibeStream Pro | 3-Column Layout</title>
+    <title>VibeStream Pro | Full Edition</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-mode">
+<header>
+    <div class="header-content">
+        <div class="logo"><i class="ri-netease-cloud-music-fill"></i><span>VibeStream</span></div>
+        
+        <div class="search-wrapper">
+            <div class="search-bar">
+                <i class="ri-search-2-line"></i>
+                <input type="text" id="searchInput" placeholder="What do you want to listen to?">
+            </div>
+        </div>
 
-    <header>
-        <div class="logo"><i class="ri-netease-cloud-music-fill"></i> Vibe<span>Stream</span></div>
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search songs or artists...">
-            <button id="searchBtn"><i class="ri-search-line"></i></button>
+        <div class="header-right">
+            <button id="themeToggle" class="theme-btn">
+                <i class="ri-moon-clear-line"></i>
+            </button>
         </div>
-        <div class="header-actions">
-            <button id="themeToggle" class="icon-btn"><i class="ri-moon-line"></i></button>
-        </div>
-    </header>
+    </div>
+</header>
 
     <main>
         <aside class="sidebar left-side">
@@ -30,25 +37,37 @@
             <div class="player-card">
                 <div class="disk-container">
                     <div class="disk" id="disk"></div>
-                    <div class="disk-dot"></div>
                 </div>
+                
                 <div class="song-detail">
-                    <h2 id="trackTitle">Ready to Vibe?</h2>
-                    <p id="trackArtist">Select a track</p>
+                    <h2 id="trackTitle">Select Music</h2>
+                    <p id="trackArtist">Artist Name</p>
                 </div>
-                <div class="controls">
-                    <button id="prev"><i class="ri-skip-back-mini-fill"></i></button>
-                    <button id="playPause" class="main-play"><i class="ri-play-fill"></i></button>
-                    <button id="next"><i class="ri-skip-forward-mini-fill"></i></button>
+
+                <canvas id="visualizer"></canvas>
+
+                <div class="progress-container">
+                    <span id="currentTime">0:00</span>
+                    <input type="range" id="seekSlider" value="0" max="100">
+                    <span id="duration">0:00</span>
+                </div>
+
+                <div class="main-controls">
+                    <button id="prev"><i class="ri-skip-back-fill"></i></button>
+                    <button id="playPause" class="play-btn"><i class="ri-play-fill"></i></button>
+                    <button id="next"><i class="ri-skip-forward-fill"></i></button>
+                </div>
+
+                <div class="volume-container">
+                    <i class="ri-volume-up-line"></i>
+                    <input type="range" id="volumeSlider" value="80" max="100">
                 </div>
             </div>
         </section>
 
         <aside class="sidebar right-side">
-            <h3><i class="ri-playlist-music-line"></i> My Playlist</h3>
-            <button class="add-local-btn" onclick="document.getElementById('fileInput').click()">
-                <i class="ri-add-line"></i> Add Local Songs
-            </button>
+            <h3><i class="ri-playlist-add-line"></i> My Playlist</h3>
+            <button class="add-btn" onclick="document.getElementById('fileInput').click()">+ Add Local</button>
             <input type="file" id="fileInput" multiple hidden accept="audio/*">
             <div id="localPlaylist" class="scroll-list"></div>
         </aside>
