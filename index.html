@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeStream Pro | Visualizer Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="loader-container" id="loader">
+    <div class="spinner"></div>
+</div>
+
+<header>
+    <div class="logo">
+        <i class="ri-netease-cloud-music-fill"></i> Vibe<span>Stream</span>
+    </div>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for chill beats...">
+        <button id="searchBtn"><i class="ri-search-2-line"></i></button>
+    </div>
+    <div class="mode-toggle">
+        <button id="onlineMode" class="active"><i class="ri-wifi-line"></i> Online</button>
+        <button id="localMode"><i class="ri-hard-drive-2-line"></i> Local</button>
+    </div>
+</header>
+
+<main>
+    <aside class="sidebar">
+        <div class="side-head">
+            <h3 id="listTitle">Trending Vibes</h3>
+            <input type="file" id="fileInput" multiple hidden accept="audio/*">
+            <button id="addFiles" class="btn-add" style="display:none;">
+                <i class="ri-add-circle-line"></i> Add Songs
+            </button>
+        </div>
+        <div class="playlist" id="playlist">
+            </div>
+    </aside>
+
+    <section class="player">
+        <div class="player-card">
+            <div class="disk-wrapper">
+                <div class="disk" id="disk"></div>
+                <div class="disk-center"></div>
+            </div>
+
+            <div class="song-info">
+                <h2 id="trackTitle">Select a Track</h2>
+                <p id="trackArtist">Chill vibes waiting for you</p>
+            </div>
+
+            <canvas id="visualizer"></canvas>
+
+            <div class="progress-area">
+                <span id="currTime">0:00</span>
+                <div class="slider-box">
+                    <input type="range" id="progress" value="0" min="0" max="100">
+                    <div class="fill" id="fillBar"></div>
+                </div>
+                <span id="durTime">0:00</span>
+            </div>
+
+            <div class="main-controls">
+                <button id="prev"><i class="ri-skip-back-fill"></i></button>
+                <button id="playPause" class="play-btn"><i class="ri-play-fill"></i></button>
+                <button id="next"><i class="ri-skip-forward-fill"></i></button>
+            </div>
+
+            <div class="vol-control">
+                <i class="ri-volume-up-line" id="volIcon"></i>
+                <div class="slider-box vol-slider">
+                    <input type="range" id="volume" min="0" max="1" step="0.05" value="0.8">
+                    <div class="fill" id="volFillBar" style="width: 80%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
