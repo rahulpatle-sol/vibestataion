@@ -32,93 +32,95 @@
       </div>
 
       <nav class="tabs">
-        <button class="tab-link active" onclick="switchTab('online')"><i class="ri-fire-line"></i> Trending</button>
-        <button class="tab-link" onclick="switchTab('saved')"><i class="ri-heart-3-line"></i> My Vibe</button>
+        <button class="tab-link active" onclick="switchTab('online')">
+          <i class="ri-fire-line"></i> Trending
+        </button>
+        <button class="tab-link" onclick="switchTab('saved')">
+          <i class="ri-heart-3-line"></i> My Vibe
+        </button>
       </nav>
 
       <div id="onlinePlaylist" class="list active"></div>
       <div id="savedPlaylist" class="list"></div>
     </aside>
-<!-- Inside <main id="mainPlayer" class="player-container"> -->
-<main id="mainPlayer" class="player-container">
-  <button id="minimizeBtn" class="mob-toggle"><i class="ri-arrow-down-s-line"></i></button>
 
-  <!-- 🎵 Rhythm Bar -->
-  <div class="rhythm-bar">
-    <span></span><span></span><span></span><span></span><span></span>
-  </div>
-
-  <!-- 🔊 Visualizer Canvas -->
-  <div class="visualizer-overlay">
-    <canvas id="visualizer"></canvas>
-  </div>
-
-  <div class="player-content">
-    <div id="disk" class="main-disk"></div>
-    <div class="song-detail">
-      <h1 id="trackTitle">Ready to Vibe?</h1>
-      <p id="trackArtist">Search a song to start</p>
-    </div>
-
-    <!-- 📁 Upload Local Song -->
-    <div class="upload-box">
-      <label for="songUpload" class="upload-label">
-        <i class="ri-upload-cloud-2-line"></i> Choose Local Song
-      </label>
-      <input type="file" id="songUpload" accept="audio/*" hidden />
-    </div>
-
-    <!-- Quick Add to Playlist -->
-    <div class="quick-add">
-      <select id="playlistSelect">
-        <option value="" selected disabled>Select playlist</option>
-      </select>
-      <button id="addCurrentToPlaylist" class="sec-btn">
-        <i class="ri-add-line"></i> Add current
-      </button>
-    </div>
-
-    <div class="progress-box">
-      <span id="currentTime">0:00</span>
-      <input type="range" id="seekSlider" value="0">
-      <span id="duration">0:00</span>
-    </div>
-
-    <div class="main-controls">
-      <button id="prev" class="sec-btn"><i class="ri-skip-back-fill"></i></button>
-      <button id="playPause" class="play-btn"><i class="ri-play-fill"></i></button>
-      <button id="next" class="sec-btn"><i class="ri-skip-forward-fill"></i></button>
-    </div>
-
-    <div class="volume-control">
-      <i class="ri-volume-down-line"></i>
-      <input type="range" id="volumeSlider" value="80">
-    </div>
-  </div>
-</main>
-
-
-    <!-- Right panel: playlists -->
     <aside class="right-panel">
       <section class="playlist-section">
         <div class="playlist-header">
           <h2>Playlists</h2>
           <div class="create-row">
             <input type="text" id="playlistNameInput" placeholder="Enter playlist name..."/>
-            <button id="createPlaylistBtn" class="primary"><i class="ri-play-list-add-line"></i> Create</button>
+            <button id="createPlaylistBtn" class="primary">
+              <i class="ri-play-list-add-line"></i> Create
+            </button>
           </div>
         </div>
 
         <div class="playlist-display">
-          <h3>Current playlist</h3>
+          <h3>Current Playlist</h3>
           <ul id="currentPlaylistList" class="playlist-list"></ul>
 
-          <h3>All playlists</h3>
+          <h3>All Playlists</h3>
           <ul id="allPlaylistsList" class="playlist-list"></ul>
         </div>
       </section>
     </aside>
   </div>
+
+  <!-- Fixed Bottom Player -->
+  <main id="mainPlayer" class="player-container">
+    <button id="minimizeBtn" class="mob-toggle">
+      <i class="ri-arrow-down-s-line"></i>
+    </button>
+
+    <div class="player-content">
+      <!-- Left: Album Art + Song Info -->
+      <div class="player-left">
+        <div id="disk" class="main-disk"></div>
+        <div class="song-detail">
+          <h1 id="trackTitle">Ready to Vibe?</h1>
+          <p id="trackArtist">Search a song to start</p>
+        </div>
+      </div>
+
+      <!-- Center: Controls + Progress -->
+      <div class="player-center">
+        <div class="main-controls">
+          <button id="prev" class="sec-btn">
+            <i class="ri-skip-back-fill"></i>
+          </button>
+          <button id="playPause" class="play-btn">
+            <i class="ri-play-fill"></i>
+          </button>
+          <button id="next" class="sec-btn">
+            <i class="ri-skip-forward-fill"></i>
+          </button>
+        </div>
+        <div class="progress-box">
+          <span id="currentTime">0:00</span>
+          <input type="range" id="seekSlider" value="0" max="100">
+          <span id="duration">0:00</span>
+        </div>
+      </div>
+
+      <!-- Right: Volume + Playlist Actions -->
+      <div class="player-right">
+        <div class="volume-control">
+          <i class="ri-volume-down-line"></i>
+          <input type="range" id="volumeSlider" value="80" max="100">
+          <i class="ri-volume-up-line"></i>
+        </div>
+        <div class="quick-add">
+          <select id="playlistSelect">
+            <option value="" selected disabled>Select playlist</option>
+          </select>
+          <button id="addCurrentToPlaylist">
+            <i class="ri-add-line"></i> Add
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
 
   <script src="script.js"></script>
 </body>
